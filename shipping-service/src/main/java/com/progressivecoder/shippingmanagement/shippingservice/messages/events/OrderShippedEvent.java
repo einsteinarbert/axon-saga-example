@@ -1,4 +1,4 @@
-package com.progressivecoder.ecommerce.events;
+package com.progressivecoder.shippingmanagement.shippingservice.messages.events;
 
 public class OrderShippedEvent {
 

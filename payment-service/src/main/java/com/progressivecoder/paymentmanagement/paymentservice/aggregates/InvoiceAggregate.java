@@ -1,7 +1,7 @@
 package com.progressivecoder.paymentmanagement.paymentservice.aggregates;
 
-import com.progressivecoder.ecommerce.commands.CreateInvoiceCommand;
-import com.progressivecoder.ecommerce.events.InvoiceCreatedEvent;
+import com.progressivecoder.paymentmanagement.paymentservice.messages.commands.CreateInvoiceCommand;
+import com.progressivecoder.paymentmanagement.paymentservice.messages.events.InvoiceCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

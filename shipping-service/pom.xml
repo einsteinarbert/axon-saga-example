@@ -49,12 +49,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.progressivecoder.saga-pattern</groupId>
-            <artifactId>core-apis</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>

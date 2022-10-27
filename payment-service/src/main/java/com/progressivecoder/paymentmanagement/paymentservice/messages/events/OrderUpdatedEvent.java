@@ -1,4 +1,4 @@
-package com.progressivecoder.ecommerce.events;
+package com.progressivecoder.paymentmanagement.paymentservice.messages.events;
 
 public class OrderUpdatedEvent {
 

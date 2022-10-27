@@ -1,4 +1,4 @@
-package com.progressivecoder.ecommerce.commands;
+package com.progressivecoder.paymentmanagement.paymentservice.messages.commands;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 

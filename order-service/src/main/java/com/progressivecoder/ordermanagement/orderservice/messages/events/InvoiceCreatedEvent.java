@@ -1,4 +1,4 @@
-package com.progressivecoder.ecommerce.events;
+package com.progressivecoder.ordermanagement.orderservice.messages.events;
 
 public class InvoiceCreatedEvent  {
 

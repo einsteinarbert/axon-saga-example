@@ -1,24 +1,29 @@
 package com.progressivecoder.ordermanagement.orderservice.sagas;
 
-import com.progressivecoder.ecommerce.commands.CreateInvoiceCommand;
-import com.progressivecoder.ecommerce.commands.CreateShippingCommand;
-import com.progressivecoder.ecommerce.commands.UpdateOrderStatusCommand;
-import com.progressivecoder.ecommerce.events.*;
 import com.progressivecoder.ordermanagement.orderservice.aggregates.OrderStatus;
+import com.progressivecoder.ordermanagement.orderservice.messages.commands.CreateInvoiceCommand;
+import com.progressivecoder.ordermanagement.orderservice.messages.commands.CreateShippingCommand;
+import com.progressivecoder.ordermanagement.orderservice.messages.commands.UpdateOrderStatusCommand;
+import com.progressivecoder.ordermanagement.orderservice.messages.events.InvoiceCreatedEvent;
+import com.progressivecoder.ordermanagement.orderservice.messages.events.OrderCreatedEvent;
+import com.progressivecoder.ordermanagement.orderservice.messages.events.OrderShippedEvent;
+import com.progressivecoder.ordermanagement.orderservice.messages.events.OrderUpdatedEvent;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.saga.SagaEventHandler;
 import org.axonframework.modelling.saga.SagaLifecycle;
 import org.axonframework.modelling.saga.StartSaga;
 import org.axonframework.spring.stereotype.Saga;
 
-import javax.inject.Inject;
 import java.util.UUID;
 
 @Saga
 public class OrderManagementSaga {
 
-    @Inject
-    private transient CommandGateway commandGateway;
+    private final transient CommandGateway commandGateway;
+
+    public OrderManagementSaga(CommandGateway commandGateway) {
+        this.commandGateway = commandGateway;
+    }
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")

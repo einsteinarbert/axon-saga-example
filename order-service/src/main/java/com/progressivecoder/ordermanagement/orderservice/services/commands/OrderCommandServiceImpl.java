@@ -1,7 +1,7 @@
 package com.progressivecoder.ordermanagement.orderservice.services.commands;
 
 import com.progressivecoder.ordermanagement.orderservice.aggregates.OrderStatus;
-import com.progressivecoder.ecommerce.commands.CreateOrderCommand;
+import com.progressivecoder.ordermanagement.orderservice.messages.commands.*;
 import com.progressivecoder.ordermanagement.orderservice.dto.commands.OrderCreateDTO;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
