@@ -1,10 +1,7 @@
 package com.progressivecoder.ordermanagement.orderservice.aggregates;
 
-import com.progressivecoder.ecommerce.commands.CreateOrderCommand;
-
-import com.progressivecoder.ecommerce.commands.UpdateOrderStatusCommand;
-import com.progressivecoder.ecommerce.events.OrderCreatedEvent;
-import com.progressivecoder.ecommerce.events.OrderUpdatedEvent;
+import com.progressivecoder.ordermanagement.orderservice.messages.commands.*;
+import com.progressivecoder.ordermanagement.orderservice.messages.events.*;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

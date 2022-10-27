@@ -1,7 +1,7 @@
 package com.progressivecoder.shippingmanagement.shippingservice.aggregates;
 
-import com.progressivecoder.ecommerce.commands.CreateShippingCommand;
-import com.progressivecoder.ecommerce.events.OrderShippedEvent;
+import com.progressivecoder.shippingmanagement.shippingservice.messages.commands.CreateShippingCommand;
+import com.progressivecoder.shippingmanagement.shippingservice.messages.events.OrderShippedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
