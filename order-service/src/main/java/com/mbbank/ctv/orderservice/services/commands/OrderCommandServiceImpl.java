@@ -23,4 +23,9 @@ public class OrderCommandServiceImpl implements OrderCommandService {
         return commandGateway.send(new CreateOrderCommand(UUID.randomUUID().toString(), orderCreateDTO.getItemType(),
                 orderCreateDTO.getPrice(), orderCreateDTO.getCurrency(), String.valueOf(OrderStatus.CREATED)));
     }
+
+    @Override
+    public void sayHello() {
+        System.out.println("HELLOOOO");
+    }
 }

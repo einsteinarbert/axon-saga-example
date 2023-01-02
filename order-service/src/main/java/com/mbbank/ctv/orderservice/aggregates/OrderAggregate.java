@@ -12,6 +12,8 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import java.math.BigDecimal;
 
+import static org.axonframework.modelling.command.AggregateLifecycle.apply;
+
 @Aggregate
 public class OrderAggregate {
 
@@ -46,7 +48,7 @@ public class OrderAggregate {
 
     @CommandHandler
     protected void on(UpdateOrderStatusCommand updateOrderStatusCommand){
-        AggregateLifecycle.apply(new OrderUpdatedEvent(updateOrderStatusCommand.orderId, updateOrderStatusCommand.orderStatus));
+        apply(new OrderUpdatedEvent(updateOrderStatusCommand.orderId, updateOrderStatusCommand.orderStatus));
     }
 
     @EventSourcingHandler

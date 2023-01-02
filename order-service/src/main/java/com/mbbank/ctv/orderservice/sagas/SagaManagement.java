@@ -1,11 +1,11 @@
 package com.mbbank.ctv.orderservice.sagas;
 
+import com.mbbank.ctv.messages.commands.CreateInvoiceCommand;
+import com.mbbank.ctv.messages.commands.UpdateOrderStatusCommand;
 import com.mbbank.ctv.messages.events.OrderCreatedEvent;
 import com.mbbank.ctv.messages.events.OrderShippedEvent;
 import com.mbbank.ctv.messages.events.OrderUpdatedEvent;
 import com.mbbank.ctv.orderservice.aggregates.OrderStatus;
-import com.mbbank.ctv.messages.commands.CreateInvoiceCommand;
-import com.mbbank.ctv.messages.commands.UpdateOrderStatusCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.saga.SagaEventHandler;
 import org.axonframework.modelling.saga.SagaLifecycle;
@@ -31,8 +31,6 @@ public class SagaManagement {
         SagaLifecycle.associateWith("paymentId", paymentId);
 
         System.out.println("order id" + orderCreatedEvent.orderId);
-
-        //send the commands
         commandGateway.send(new CreateInvoiceCommand(paymentId, orderCreatedEvent.orderId));
     }
 
