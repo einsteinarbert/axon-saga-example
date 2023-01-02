@@ -36,6 +36,9 @@ public class SagaManagement {
 
     @SagaEventHandler(associationProperty = "orderId")
     public void handle(OrderShippedEvent orderShippedEvent){
+        if (orderShippedEvent.orderId.length() > 5) {
+            // throw new IllegalArgumentException("simulator test rollback");
+        }
         commandGateway.send(new UpdateOrderStatusCommand(orderShippedEvent.orderId, String.valueOf(OrderStatus.SHIPPED)));
     }
 
