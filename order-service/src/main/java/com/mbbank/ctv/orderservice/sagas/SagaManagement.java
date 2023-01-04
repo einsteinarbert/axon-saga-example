@@ -23,7 +23,7 @@ public class SagaManagement {
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")
-    public void handle(OrderCreatedEvent orderCreatedEvent){
+    public void handle(OrderCreatedEvent orderCreatedEvent) {
         String paymentId = UUID.randomUUID().toString();
         System.out.println("Saga invoked");
 
