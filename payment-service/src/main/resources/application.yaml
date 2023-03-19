@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: payment-service
+  datasource:
+    ## https://www.baeldung.com/spring-boot-h2-database
+    url: jdbc:h2:file:~/test/payment
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

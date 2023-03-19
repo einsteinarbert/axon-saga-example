@@ -23,12 +23,17 @@ public class ShippingAggregate {
 
     @CommandHandler
     public ShippingAggregate(CreateShippingCommand createShippingCommand){
-        AggregateLifecycle.apply(new OrderShippedEvent(createShippingCommand.shippingId, createShippingCommand.orderId, createShippingCommand.paymentId));
+        AggregateLifecycle.apply(new OrderShippedEvent(createShippingCommand.shippingId, createShippingCommand.orderId,
+                createShippingCommand.paymentId, createShippingCommand.itemType));
     }
 
     @EventSourcingHandler
     protected void on(OrderShippedEvent orderShippedEvent){
         this.shippingId = orderShippedEvent.shippingId;
         this.orderId = orderShippedEvent.orderId;
+        // throw random exception
+        if ("sextoy".equalsIgnoreCase(orderShippedEvent.itemType)) {
+            throw new UnsupportedOperationException("The order item: " + orderShippedEvent.itemType + " in Tokuda inventory is not supported :))");
+        }
     }
 }

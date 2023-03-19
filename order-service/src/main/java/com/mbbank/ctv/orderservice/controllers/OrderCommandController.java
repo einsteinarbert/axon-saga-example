@@ -21,6 +21,7 @@ public class OrderCommandController {
 
     @PostMapping
     public CompletableFuture<String> createOrder(@RequestBody OrderCreateDTO orderCreateDTO){
+        System.out.println("001");
         return orderCommandService.createOrder(orderCreateDTO);
     }
 }

@@ -26,3 +26,6 @@ HELP.md
 /build/
 
 */target/*
+/data/*
+/AxonIQ.pid
+/plugins/cache/bundle0/last.java.version
