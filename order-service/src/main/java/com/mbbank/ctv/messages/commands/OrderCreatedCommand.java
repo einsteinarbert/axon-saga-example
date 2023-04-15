@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 @Builder
 @Data
 public class OrderCreatedCommand {
+    @TargetAggregateIdentifier
     public String orderId;
 
     public String itemType;
@@ -23,7 +24,5 @@ public class OrderCreatedCommand {
     public String currency;
 
     public String orderStatus;
-
-    @TargetAggregateIdentifier
     public Integer id;
 }

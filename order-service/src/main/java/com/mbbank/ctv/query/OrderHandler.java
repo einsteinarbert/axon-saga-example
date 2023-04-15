@@ -14,6 +14,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import javax.transaction.Transactional;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -26,20 +30,22 @@ public class OrderHandler {
     private CommandGateway commandGateway;
 
     @EventHandler
+    @Transactional
     public void on(OrderCreatedEvent event) {
-        System.out.println("005");
-        log.info("Inserting/Update orders: {} {}", event.orderId, event.itemType);
         var order = Orders.builder()
                 .orderId(event.orderId)
                 .status(event.orderStatus)
                 .itemName(event.itemType)
                 .price(event.price)
                 .build();
-        var update = ordersRepo.findByOrderId(event.orderId).orElse(order);
-        var result = ordersRepo.save(update);
-        // TODO commandGateway send event with data taking from 'result' above
+        var update = ordersRepo.findByOrderId(event.orderId);
+        if (update.isPresent()) return;
+        var result = ordersRepo.save(order);
+        System.out.println("005: " + event.orderId);
+        log.info("Inserting/Update orders: {} {}", event.orderId, event.itemType);
+        // TODO commandGateway send event with data taken from 'result' above
         assert commandGateway != null;
-        var nextEvent = new OrderCreatedCommand();
+        var nextEvent = new OrderCreatedCommand(UUID.randomUUID().toString(), event.itemType, event.price, event.currency, event.orderStatus, result.getId());
         BeanUtils.copyProperties(event, nextEvent);
         nextEvent.setId(result.getId());
         commandGateway.send(nextEvent);

@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -24,6 +25,7 @@ import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @ComponentScan("com.mbbank.ctv.paymentservice.service.handler")
+@EnableJpaRepositories(basePackages = "com.mbbank.ctv.paymentservice.repo")
 @AutoConfigureAfter({InfraConfiguration.class}) // ignore circle dependency error
 @ConditionalOnBean({InfraConfiguration.class}) // ignore circle dependency error
 public class SagaConfiguration {

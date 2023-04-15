@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 public class PaymentHandler {
     @CommandHandler
     public void on(TestCommand testCommand) {
-        System.out.println("chems");
+        System.err.println("chemschemschemschemschems");
     }
 }
