@@ -20,7 +20,7 @@ public class Configuration {
     @Primary
     public Configurer configure(Configurer config, OrderHandler orderHandler) {
         config.registerEventHandler(configuration -> orderHandler);
-        config.registerCommandHandler(configuration -> orderHandler); // for handling command
+//        config.registerCommandHandler(configuration -> orderHandler); // for handling command
         return config;
     }
 }
