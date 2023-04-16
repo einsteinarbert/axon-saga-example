@@ -1,5 +1,7 @@
 package com.mbbank.ctv.shippingservice.aggregates;
 
+import com.mbbank.ctv.error.GiftCardBusinessErrorCode;
+import com.mbbank.ctv.exception.GiftCardException;
 import com.mbbank.ctv.messages.commands.CreateShippingCommand;
 import com.mbbank.ctv.messages.events.OrderShippedEvent;
 import org.axonframework.commandhandling.CommandHandler;
@@ -30,12 +32,14 @@ public class ShippingAggregate {
 
     @EventSourcingHandler
     protected void on(OrderShippedEvent orderShippedEvent){
-        System.out.println("012 - sextoy exception throw situation");
+        System.out.println("012");
         this.shippingId = orderShippedEvent.shippingId;
         this.orderId = orderShippedEvent.orderId;
         // throw random exception
-        if ("sextoy".equalsIgnoreCase(orderShippedEvent.itemType)) {
-            throw new UnsupportedOperationException("The order item: " + orderShippedEvent.itemType + " in Tokuda inventory is not supported :))");
+        if ("SEXTOY".equalsIgnoreCase(orderShippedEvent.itemType)) {
+            System.out.println("sextoy exception throw situation");
+            throw new GiftCardException("The order item: " + orderShippedEvent.itemType
+                    + " in Tokuda inventory is not supported :))", GiftCardBusinessErrorCode.UNKNOWN);
         }
     }
 }
