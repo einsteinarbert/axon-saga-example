@@ -72,11 +72,13 @@ public class OrderAggregate {
 
     @CommandHandler
     protected void on(UpdateOrderStatusCommand updateOrderStatusCommand){
+        System.out.println("014");
         apply(new OrderUpdatedEvent(updateOrderStatusCommand.orderId, updateOrderStatusCommand.orderStatus));
     }
 
     @EventSourcingHandler
     protected void on(OrderUpdatedEvent orderUpdatedEvent){
+        System.out.println("015");
         this.orderId = orderId;
         this.orderStatus = OrderStatus.valueOf(orderUpdatedEvent.orderStatus);
     }

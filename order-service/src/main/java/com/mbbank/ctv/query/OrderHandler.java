@@ -53,6 +53,7 @@ public class OrderHandler {
 
     @EventHandler
     public void on(OrderUpdatedEvent event) {
+        System.out.println("016");
         log.info("Update orders: {} {}", event.orderId, event.orderStatus);
         ordersRepo.findByOrderId(event.orderId).ifPresent(orders -> {
             orders.setStatus(event.orderStatus);

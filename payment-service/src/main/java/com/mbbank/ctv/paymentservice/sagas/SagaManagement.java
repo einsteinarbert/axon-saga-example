@@ -26,6 +26,7 @@ public class SagaManagement {
         String shippingId = UUID.randomUUID().toString();
 
         System.out.println("Saga continued");
+        System.out.println("010");
 
         //associate Saga with shipping
         SagaLifecycle.associateWith("shipping", shippingId);

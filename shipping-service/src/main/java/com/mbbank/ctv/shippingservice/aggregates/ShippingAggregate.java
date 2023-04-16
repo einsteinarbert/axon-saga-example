@@ -23,12 +23,14 @@ public class ShippingAggregate {
 
     @CommandHandler
     public ShippingAggregate(CreateShippingCommand createShippingCommand){
+        System.out.println("011");
         AggregateLifecycle.apply(new OrderShippedEvent(createShippingCommand.shippingId, createShippingCommand.orderId,
                 createShippingCommand.paymentId, createShippingCommand.itemType));
     }
 
     @EventSourcingHandler
     protected void on(OrderShippedEvent orderShippedEvent){
+        System.out.println("012 - sextoy exception throw situation");
         this.shippingId = orderShippedEvent.shippingId;
         this.orderId = orderShippedEvent.orderId;
         // throw random exception

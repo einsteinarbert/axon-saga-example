@@ -36,11 +36,13 @@ public class SagaManagement {
 
     @SagaEventHandler(associationProperty = "orderId")
     public void handle(OrderShippedEvent orderShippedEvent){
+        System.out.println("013");
         commandGateway.send(new UpdateOrderStatusCommand(orderShippedEvent.orderId, String.valueOf(OrderStatus.SHIPPED)));
     }
 
     @SagaEventHandler(associationProperty = "orderId")
     public void handle(OrderUpdatedEvent orderUpdatedEvent){
+        System.out.println("END---------------017---------------END");
         SagaLifecycle.end();
     }
 }
