@@ -88,3 +88,10 @@ end
 SagaOrder -> EndLifeCycle --: Kết thúc luồng
 ```
 
+## II. Rollback flow
+> UnitOfWork is a concept in Axon, In Axon, the Unit of Work is managed behind the scenes when you work with the framework.
+> You don't typically interact directly with the Unit of Work instance, but you can still understand its role in managing 
+> transactions and event processing.
+> the Unit of Work is being managed by Axon behind the scenes as you interact with the framework's components, such as the CommandGateway.
+> The framework ensures that the command handling, event sourcing, and event dispatching occur within the scope of a Unit of Work. 
+> This allows for transactional consistency and event-driven communication between aggregates and other components.
